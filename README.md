@@ -17,16 +17,9 @@ while that support awaits review upstream it is vendored in
 
 - Buttons for power, fan up, fan down, and oscillate that transmit the
   corresponding remote key
-- Fan entity with 10 speed steps (drives the remote's fan up/down keys)
-- Oscillation toggle
-- Preset modes: auto, cool, night
 
-Entities mirror the physical remote: each control sends exactly the key press
-the corresponding remote button would, and no device power state is tracked.
-Speed control is relative, so the integration remembers the last speed it
-commanded (restarting Home Assistant resets it). Buttons send raw key presses,
-so using them (or the physical remote) does not update the fan entity's
-tracked speed or oscillation.
+Each button mirrors one key on the physical remote: pressing it sends exactly
+the key press the remote button would, and no device state is tracked.
 
 ## Requirements
 
