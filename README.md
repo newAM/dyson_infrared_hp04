@@ -14,13 +14,15 @@ library.
 
 ## Features
 
+- Power button that transmits the remote's power key (it toggles the device)
 - Fan entity with 10 speed steps (drives the remote's fan up/down keys)
 - Oscillation toggle
 - Preset modes: auto, cool, night
 
-Infrared is one-way, so all state is assumed. The power and oscillate keys are
-toggles, so the integration only transmits them when its tracked state differs
-from the request.
+Entities mirror the physical remote: each control sends exactly the key press
+the corresponding remote button would, and no device power state is tracked.
+Speed control is relative, so the integration remembers the last speed it
+commanded (restarting Home Assistant resets it).
 
 ## Requirements
 

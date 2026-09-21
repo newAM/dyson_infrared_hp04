@@ -18,6 +18,11 @@
     }
   },
   "entity": {
+    "button": {
+      "power": {
+        "name": "Power"
+      }
+    },
     "fan": {
       "fan": {
         "name": "Dyson HP04"
