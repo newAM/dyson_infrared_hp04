@@ -1,0 +1,13 @@
+{
+  "domain": "dyson_infrared_hp04",
+  "name": "Dyson Infrared HP04",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "integration_type": "device",
+  "iot_class": "assumed_state",
+  "requirements": [
+    "infrared-protocols @ git+https://github.com/home-assistant-libs/infrared-protocols@main"
+  ],
+  "version": "0.1.0"
+}
