@@ -1,9 +1,8 @@
 """Shared entity base for Dyson HP04 infrared entities."""
 
-from infrared_protocols.codes.dyson.hp04 import DYSON_HP04_DEVICE_ID, DysonHP04Code
-from infrared_protocols.commands.dyson import DysonPureCommand
-
 from homeassistant.components.infrared import InfraredEmitterConsumerEntity
+
+from .infrared_protocols import DYSON_HP04_DEVICE_ID, DysonHP04Code, DysonPureCommand
 
 # A key press on the OEM remote transmits the command frame followed by two
 # hold repeat frames.

@@ -6,8 +6,5 @@
   "dependencies": ["infrared"],
   "integration_type": "device",
   "iot_class": "assumed_state",
-  "requirements": [
-    "infrared-protocols @ git+https://github.com/newAM/infrared-protocols@add-dyson-hp04"
-  ],
   "version": "0.1.0"
 }

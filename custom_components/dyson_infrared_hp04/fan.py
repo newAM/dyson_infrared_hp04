@@ -3,8 +3,6 @@
 import asyncio
 from typing import override
 
-from infrared_protocols.codes.dyson.hp04 import DysonHP04Code
-
 from homeassistant.components.fan import FanEntity, FanEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -13,6 +11,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .const import CONF_INFRARED_EMITTER_ENTITY_ID, DOMAIN
 from .entity import DysonInfraredHP04Entity
+from .infrared_protocols import DysonHP04Code
 
 PARALLEL_UPDATES = 0
 

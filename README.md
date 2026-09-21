@@ -8,9 +8,10 @@ air purifier, fan, and heater over infrared. It builds on the built-in
 and sends commands through an infrared emitter entity (for example an ESPHome
 `remote_transmitter`).
 
-The IR encoding comes from the
-[`infrared-protocols`](https://github.com/home-assistant-libs/infrared-protocols)
-library.
+The IR encoding comes from
+[`infrared-protocols`](https://github.com/home-assistant-libs/infrared-protocols);
+while that support awaits review upstream it is vendored in
+`infrared_protocols.py` (see the file header for details).
 
 ## Features
 
@@ -31,9 +32,6 @@ tracked speed or oscillation.
 
 - Home Assistant with the `infrared` integration set up and an infrared
   emitter entity pointed at the HP04
-- `infrared-protocols` with Dyson Pure (21-bit) support. The manifest pins the
-  library to the `add-dyson-hp04` branch of a fork until that support is
-  released; swap the requirement for the released version once available.
 
 ## Installation
 
