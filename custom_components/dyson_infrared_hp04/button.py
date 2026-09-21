@@ -15,6 +15,15 @@ from .entity import DysonInfraredHP04Entity
 
 PARALLEL_UPDATES = 0
 
+# Each button mirrors one remote key: power and oscillate toggle the device,
+# fan up and fan down step the speed.
+_KEY_BUTTONS: list[tuple[str, DysonHP04Code]] = [
+    ("power", DysonHP04Code.POWER),
+    ("fan_up", DysonHP04Code.FAN_UP),
+    ("fan_down", DysonHP04Code.FAN_DOWN),
+    ("oscillate", DysonHP04Code.OSCILLATE),
+]
+
 
 async def async_setup_entry(
     hass: HomeAssistant,
@@ -24,27 +33,32 @@ async def async_setup_entry(
     """Set up the Dyson HP04 button platform from a config entry."""
     infrared_emitter_entity_id = entry.data[CONF_INFRARED_EMITTER_ENTITY_ID]
     async_add_entities(
-        [
-            DysonInfraredHP04PowerButton(
-                infrared_emitter_entity_id, entry.entry_id, entry.title
-            )
-        ]
+        DysonInfraredHP04KeyButton(
+            infrared_emitter_entity_id, entry.entry_id, entry.title, key, code
+        )
+        for key, code in _KEY_BUTTONS
     )
 
 
-class DysonInfraredHP04PowerButton(DysonInfraredHP04Entity, ButtonEntity):
-    """Representation of a Dyson HP04 power button entity."""
+class DysonInfraredHP04KeyButton(DysonInfraredHP04Entity, ButtonEntity):
+    """Representation of a Dyson HP04 remote key button."""
 
-    _attr_translation_key = "power"
     _attr_has_entity_name = True
 
     def __init__(
-        self, infrared_emitter_entity_id: str, unique_id: str, name: str
+        self,
+        infrared_emitter_entity_id: str,
+        unique_id: str,
+        name: str,
+        translation_key: str,
+        code: DysonHP04Code,
     ) -> None:
-        """Initialize the Dyson HP04 power button entity."""
+        """Initialize the key button entity."""
         self._infrared_emitter_entity_id = infrared_emitter_entity_id
+        self._code = code
 
-        self._attr_unique_id = f"{unique_id}_power"
+        self._attr_translation_key = translation_key
+        self._attr_unique_id = f"{unique_id}_{translation_key}"
 
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, unique_id)},
@@ -53,6 +67,5 @@ class DysonInfraredHP04PowerButton(DysonInfraredHP04Entity, ButtonEntity):
 
     @override
     async def async_press(self) -> None:
-        """Send the power key press."""
-        # The power key toggles the device; a press always transmits it.
-        await self._async_send_key(DysonHP04Code.POWER)
+        """Send the key press."""
+        await self._async_send_key(self._code)

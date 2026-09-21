@@ -19,6 +19,15 @@
   },
   "entity": {
     "button": {
+      "fan_down": {
+        "name": "Fan down"
+      },
+      "fan_up": {
+        "name": "Fan up"
+      },
+      "oscillate": {
+        "name": "Oscillate"
+      },
       "power": {
         "name": "Power"
       }
