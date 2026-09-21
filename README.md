@@ -8,23 +8,19 @@ air purifier, fan, and heater over infrared. It builds on the built-in
 and sends commands through an infrared emitter entity (for example an ESPHome
 `remote_transmitter`).
 
-The IR encoding comes from
-[`infrared-protocols`](https://github.com/home-assistant-libs/infrared-protocols);
-while that support awaits review upstream it is vendored in
-`infrared_protocols.py` (see the file header for details).
-
 ## Features
 
-- Buttons for power, fan up, fan down, and oscillate that transmit the
-  corresponding remote key
+Buttons for:
 
-Each button mirrors one key on the physical remote: pressing it sends exactly
-the key press the remote button would, and no device state is tracked.
+- Power
+- Speed up
+- Speed down
+- Oscillate
 
 ## Requirements
 
 - Home Assistant with the `infrared` integration set up and an infrared
-  emitter entity pointed at the HP04
+  emitter entity pointed at the HP04.
 
 ## Installation
 
