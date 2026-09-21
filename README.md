@@ -27,9 +27,8 @@ from the request.
 - Home Assistant with the `infrared` integration set up and an infrared
   emitter entity pointed at the HP04
 - `infrared-protocols` with Dyson Pure (21-bit) support. The manifest pins the
-  library to git until that support is released; if needed, replace the
-  requirement with your own fork or branch, or install the library into the
-  Home Assistant environment manually.
+  library to the `add-dyson-hp04` branch of a fork until that support is
+  released; swap the requirement for the released version once available.
 
 ## Installation
 
